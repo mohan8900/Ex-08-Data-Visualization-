@@ -1,12 +1,12 @@
 # Ex-07-Data-Visualization-
 
 ## AIM
-To Perform Data Visualization on the given dataset and save the data to a file. 
+To Perform Data Visualization on a complex dataset and save the data to a file. 
 
-# Explanation
+## EXPLANATION
 Data visualization is the graphical representation of information and data. By using visual elements like charts, graphs, and maps, data visualization tools provide an accessible way to see and understand trends, outliers, and patterns in data.
 
-# ALGORITHM
+## ALGORITHM
 ### STEP 1
 Read the given Data
 ### STEP 2
@@ -18,5 +18,136 @@ Apply data visualization techniques to identify the patterns of the data.
 
 
 # CODE
+```
+Developed by : VISHAL GOWTHAMAN K R
+Registration Number : 212221230123
+```
+```
+import pandas as pd
+import numpy as np
+df=pd.read_csv("Supermarket.csv")
+df
+df.head()
 
-# OUPUT
+#Data Visualization using Seaborn
+
+import seaborn as sns
+from matplotlib import pyplot as plt
+
+# Line plot
+
+plt.figure(figsize=(8,5))
+sns.lineplot(x="Segment",y="Region",data=df,marker='o')
+plt.xticks(rotation = 90)
+sns.lineplot(x='Ship Mode',y='Category', hue ="Segment",data=df)
+sns.lineplot(x="Category",y="Sales",data=df,marker='o')
+
+# Scatterplot
+
+sns.scatterplot(x='Category',y='Sub-Category',data=df)
+sns.scatterplot(x='Category', y='Sub-Category', hue ="Segment",data=df)
+plt.figure(figsize=(10,7))
+sns.scatterplot(x="Region",y="Sales",data=df)
+plt.xticks(rotation = 90)
+
+# Boxplot
+
+sns.boxplot(x="Sub-Category",y="Discount",data=df)
+sns.boxplot( x="Profit", y="Category",data=df)
+
+# Barplot
+
+sns.barplot(x="Sub-Category",y="Sales",data=df)
+plt.xticks(rotation = 90)
+sns.barplot(x="Category",y="Sales",data=df)
+plt.xticks(rotation = 90)
+
+# Pointplot
+
+sns.pointplot(x=df["Quantity"],y=df["Discount"])
+
+#Count plot
+
+sns.countplot(x="Category",data=df)
+sns.countplot(x="Sub-Category",data=df)
+
+# Histogram
+
+sns.histplot(data=df,x ='Ship Mode',hue='Sub-Category')
+
+# KDE Plot
+
+sns.kdeplot(x="Profit", data = df,hue='Category')
+
+#Data Visualization Using MatPlotlib
+
+# Plot
+
+plt.plot(df['Category'], df['Sales'])
+plt.show()
+
+# Heatmap
+
+df.corr()
+plt.subplots(figsize=(12,7))
+sns.heatmap(df.corr(),annot=True)
+
+# Piechart
+
+df1=df.groupby(by=["Ship Mode"]).sum()
+labels=[]
+for i in df1.index:
+    labels.append(i)
+colors=sns.color_palette("bright")
+plt.pie(df1["Sales"],labels=labels,autopct="%0.0f%%")
+plt.show()
+
+# Histogram
+
+plt.hist(df["Sub-Category"],facecolor="peru",edgecolor="blue",bins=10)
+plt.show()
+
+# Bargraph
+
+plt.bar(df.index,df['Category'])
+plt.show()
+
+# Scatterplot
+
+plt.scatter(df["Region"],df["Profit"], c ="blue")
+plt.show()              
+
+# Boxplot
+
+plt.boxplot(x="Sales",data=df)
+plt.show()
+```
+# OUTPUT
+![output](./cap1.PNG)
+![output](./cap2.PNG)
+![output](./cap3.PNG)
+![output](./cap4.PNG)
+![output](./cap5.PNG)
+![output](./cap6.PNG)
+![output](./cap7.PNG)
+![output](./cap8.PNG)
+![output](./cap9.PNG)
+![output](./cap10.PNG)
+![output](./cap11.PNG)
+![output](./cap12.PNG)
+![output](./cap13.PNG)
+![output](./cap14.PNG)
+![output](./cap15.PNG)
+![output](./cap16.PNG)
+![output](./cap17.PNG)
+![output](./cap18.PNG)
+![output](./cap19.PNG)
+![output](./cap20.PNG)
+![output](./cap21.PNG)
+![output](./cap22.PNG)
+![output](./cap23.PNG)
+![output](./cap24.PNG)
+
+# RESULT
+
+Thus data visualisation is performed on the given data set using tools available in matplotlib and seaborn.
